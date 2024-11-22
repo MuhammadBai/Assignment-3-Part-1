@@ -1,0 +1,13 @@
+[Unit]
+# Description of the timer
+Description=Timer to run generate-index.service everyday at 05:00
+
+[Timer]
+# this Run the service every day at 05:00
+OnCalendar=*-*-* 05:00:00
+Persistent=true
+
+[Install]
+# timer starts at boot
+WantedBy=timers.target
+

@@ -1,0 +1,17 @@
+[Unit]
+# Description of the service
+Description=Generate daily system information index.html at 05:00
+
+[Service]
+# Use the webgen user and group
+User=webgen
+Group=webgen
+# Specify the script to execute
+ExecStart=/var/lib/webgen/bin/generate_index
+# Ensure the working directory is where the the HTML file will be
+WorkingDirectory=/var/lib/webgen/bin
+Type=oneshot
+
+[Install]
+WantedBy=multi-user.target
+
