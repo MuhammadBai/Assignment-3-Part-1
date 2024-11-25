@@ -2,7 +2,7 @@
 
 # Task 1
 ___
-## Q1:What is the benefit of creating a system user for this task rather than using a regular user or root?
+## Q1: What is the benefit of creating a system user for this task rather than using a regular user or root?
 Creating a system user like webgen ensures better security and organization:
 * It provides security: A system user has limited privileges and is used only for specific tasks (like generating the index.html file). This reduces the risk of accidental changes compared to using the powerful root account.
 * It keeps this task isolated from other regular user activities, making it easier to track which user is responsible for the task. It also ensures that files created (like index.html) are owned by webgen, avoiding conflicts with other users.
@@ -140,7 +140,7 @@ EOF
 3. The values for kernel release, operating system, date, and package count are dynamically inserted into the HTML from the previously defined variables (`$KERNEL_RELEASE`, `$OS_NAME`, `$DATE`, `$PACKAGE_COUNT`).
 **This script generates a system information page that can be viewed in a web browser.**
 
-5. Check if the file was created( Error Handling)
+### 5. Check if the file was created( Error Handling)
 ```
 if [ $? -eq 0 ]; then
     echo "Success: File created at $OUTPUT_FILE."
@@ -270,7 +270,7 @@ This service makes sure the generate_index script runs securely, under the corre
 
 #### What are relative paths?
 
-*A relative path is a way to specify the location of a file or directory in relation to the current working directory. In the context of this script, when we say "relative paths", we mean that if the script refers to a file without using the full path (e.g., /home/user/file.txt), it will look for that file based on the current working directory set in the WorkingDirectory directive (which is /var/lib/webgen/bin in this case). So, the script will search for files relative to that directory.*
+*A relative path is a way to specify the location of a file or directory in relation to the current working directory. when we say "relative paths", we mean that if the script refers to a file without using the full path (e.g., /home/user/file.txt), it will look for that file based on the current working directory set in the WorkingDirectory directive (which is /var/lib/webgen/bin in this case). So, the script will search for files relative to that directory.*
 
 Testing the generate-index.service
 Before setting up the timer, it’s important to verify that the service itself works as intended. Here's how you can test it step by step:
