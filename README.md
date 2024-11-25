@@ -1,12 +1,14 @@
 ## Assignment-3-Part-1
 
 # Task 1
-Lets start with task one which is to create the system user `webgen` with its home directory at `/var/lib/webgen` and its subdirectories `bin/` and `HTML/`
-
+___
 ## Q1:What is the benefit of creating a system user for this task rather than using a regular user or root?
 Creating a system user like webgen ensures better security and organization:
 * It provides security: A system user has limited privileges and is used only for specific tasks (like generating the index.html file). This reduces the risk of accidental changes compared to using the powerful root account.
 * It keeps this task isolated from other regular user activities, making it easier to track which user is responsible for the task. It also ensures that files created (like index.html) are owned by webgen, avoiding conflicts with other users.
+___
+
+Lets start with task one which is to create the system user `webgen` with its home directory ar `/var/lib/webgen` and it's subdirectories `bin/` and `HTML/`
 
 ## `index.html` file
 
@@ -21,7 +23,7 @@ This is a dynamically generated HTML file that displays key system information. 
 
 *The file is designed to be easily viewed either through a web server or directly in a browser, offering a quick and clear snapshot of the system's current status. It's part of a larger automation process, such as the webgen utility, which regularly updates and presents the system's details. This helps you stay informed about things like the system's kernel version, operating system, installed packages, in a web format.*
 
-## generate_index script
+## `generate_index` script
 This Bash script generates and writes the `index.html` file.
 
 **1) it sets strict error handling in case of errors**
@@ -31,7 +33,7 @@ This Bash script generates and writes the `index.html` file.
 * set -u: It treats unset variables as errors.
 * pipefail: Capture errors in pipelines.
 
-**2) Define variables
+**2) Define variables**
 ```
 KERNEL_RELEASE=$(uname -r)
 OS_NAME=$(grep '^PRETTY_NAME' /etc/os-release | cut -d '=' -f2 | tr -d '"')
@@ -195,12 +197,12 @@ Run the script and ensure the `index.html` file is correctly generated with up-t
 
 **Important** 
 It is important that the directory is created and owned by `webgen` system user before running the script if the directory `/var/lib/webgen/HTML` does not exist it will return an error!
----
+___
 
 # Task 2
 
 ## generate-index.service file
-
+___
 ## Q2. How will you verify that the timer is active and that the service runs successfully?
 
 You can check if the timer and service are working by reviewing their status and logs:
@@ -223,6 +225,7 @@ This confirms if the generate_index script ran successfully or encountered issue
 
 3. Combined logs: To see logs for both the timer and service together:
 `sudo journalctl -u generate-index.timer -u generate-index.service`
+___
 
 ```
 [Unit]
@@ -385,7 +388,7 @@ it will show that the timer triggered the service correctly.
 # Task 3
 
  ## Nginx.conf file
-
+___
 ## Q4. Why is it important to use a separate server block file instead of modifying the main nginx.conf file directly?
 Using a separate server block file (e.g., `/etc/nginx/conf.d/server_block.conf`) keeps your configuration easier to manage:
 Organizing your server block configuration in a separate file makes managing your Nginx setup much easier and safer. It keeps your site-specific settings separate from the main Nginx configuration, ensuring everything stays clean and well-structured. If there’s a mistake in your server block, it won’t affect the entire server, so other configurations can still run smoothly. This setup is also scalable—you can quickly add new server blocks for additional websites or services without needing to change the main configuration file, keeping everything organized and easy to maintain.
@@ -403,6 +406,7 @@ configuration file `/etc/nginx/nginx.conf` test is successful
 
 Reload NGINX after changes:
 `sudo systemctl reload nginx`
+___
 
  ```
 user webgen;
@@ -574,9 +578,10 @@ Automates Access: Once your system information page `index.html` is generated, t
 Users can easily access the latest system details by visiting the server’s IP or domain.
 
 # Task 4
-
+___
 ## Q6 How can you check the status of the firewall:
 with the following command: `sudo ufw status verbose`
+___
 
 ## Firewall Configuration with UFW
 To secure the server while serving the HTML document that contaoins system information, I configured a firewall using UFW (Uncomplicated Firewall).
@@ -617,7 +622,7 @@ The output confirmed that SSH and HTTP were allowed, and SSH rate-limiting was i
 
 My ip address: 137.184.10.176
 
-
+___
 ## Q7. Can you think of ways to enhance the generate_index script to include additional system information or error handling?
 
 To enhance some ideas i think of:
@@ -628,6 +633,6 @@ Improved Error Handling:
 Check if the `/var/lib/webgen/HTML` directory exists before proceeding.
 Log errors to a file for troubleshooting.
 Add more descriptive error messages for missing tools like uname or pacman.
-
+___
 
 
