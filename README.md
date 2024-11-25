@@ -634,4 +634,11 @@ Log errors to a file for troubleshooting.
 Add more descriptive error messages for missing tools like uname or pacman.
 ___
 
+### Sources:
+
+1. [lscpu - Arch Wiki](https://man.archlinux.org/man/lscpu.1.en)
+2. [What is a Web Server? - MDN Web Docs](https://developer.mozilla.org/en-US/docs/Learn/Common_questions/Web_mechanics/What_is_a_web_server)
+3. [Introduction to Web Servers - DigitalOcean](https://www.digitalocean.com/community/conceptual-articles/introduction-to-web-servers)
+4. [NGINX Documentation - NGINX Docs](https://docs.nginx.com/search.html#sort=relevancy)
+5. [Nginx - Arch Wiki](https://wiki.archlinux.org/title/Nginx)
 
