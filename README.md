@@ -4,8 +4,8 @@
 ___
 ## Q1: What is the benefit of creating a system user for this task rather than using a regular user or root?
 Creating a system user like webgen ensures better security and organization:
-* It provides security: A system user has limited privileges and is used only for specific tasks (like generating the index.html file). This reduces the risk of accidental changes compared to using the powerful root account.
-* It keeps this task isolated from other regular user activities, making it easier to track which user is responsible for the task. It also ensures that files created (like index.html) are owned by webgen, avoiding conflicts with other users.
+* It provides security: A system user has limited privileges and is used only for specific tasks like generating the index.html file. This reduces the risk of accidental changes compared to using the root account.
+* It keeps this task isolated from other regular user activities, and makes it easier to track which user is responsible for the task. It also ensures that files created index.html are owned by webgen which avoid conflicts with other users.
 ___
 
 Lets start with task one which is to create the system user `webgen` with its home directory ar `/var/lib/webgen` and it's subdirectories `bin/` and `HTML/`
