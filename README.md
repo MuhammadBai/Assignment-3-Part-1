@@ -390,8 +390,7 @@ it will show that the timer triggered the service correctly.
  ## Nginx.conf file
 ___
 ## Q4. Why is it important to use a separate server block file instead of modifying the main nginx.conf file directly?
-Using a separate server block file (e.g., `/etc/nginx/conf.d/server_block.conf`) keeps your configuration easier to manage:
-Organizing your server block configuration in a separate file makes managing your Nginx setup much easier and safer. It keeps your site-specific settings separate from the main Nginx configuration, ensuring everything stays clean and well-structured. If there’s a mistake in your server block, it won’t affect the entire server, so other configurations can still run smoothly. This setup is also scalable—you can quickly add new server blocks for additional websites or services without needing to change the main configuration file, keeping everything organized and easy to maintain.
+Using a separate server block file (e.g., `/etc/nginx/conf.d/server_block.conf`) keeps your configuration easier to manage, and Organizing your server block configuration in a separate file makes managing your Nginx setup much easier and safer. It keeps your site-specific settings separate from the main Nginx configuration which ensures that everything stays clean and well-structured. If there’s a mistake in your server block, it won’t affect the entire server, so other configurations can still run smoothly. This setup is also scalable which means you can quickly add new server blocks for additional websites or services without needing to change the main configuration file which keeps everything organized and easy to maintain.
 
 ## Q5. How can you check the status of the NGINX service and test your NGINX configuration?
 Check NGINX service status:
