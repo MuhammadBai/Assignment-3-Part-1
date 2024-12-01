@@ -491,9 +491,36 @@ Logs any issues or warnings in the server’s error log for troubleshooting.
 
 ### Flexible Configurations
 * `include /etc/nginx/conf.d/*.conf`;
-Nginx will load any extra configuration files from this directory. it is good to add specific feature without cluttering the main file. 
+Nginx will load any extra configuration files from this directory. it is good to add specific feature without cluttering the main file.
 * `include /etc/nginx/sites-enabled/*`;
 Adds server-specific configurations from the sites-enabled directory which is helpul for hosting multiple websites.
+Setting Up Server Block Configurations
+
+### *To make managing websites easier, we use a clean and modular directory structure for Nginx configuration files. This involves creating two directories and linking configurations for better organization*
+
+### Create the Necessary Directories These directories help organize server-specific configurations:
+```
+sudo mkdir /etc/nginx/sites-available
+sudo mkdir /etc/nginx/sites-enabled
+```
+Add Your Server Block Configuration
+
+### Create a configuration file named server_block.conf inside /etc/nginx/sites-available.
+* This file contains the specific settings for your server such as ip address, _.
+* Enable the Server Block
+
+Link the configuration file from sites-available to sites-enabled:
+`sudo ln -s /etc/nginx/sites-available/server_block.conf /etc/nginx/sites-enabled/server_block.conf`
+This symbolic link ensures that Nginx knows which configurations to use.
+
+### How This Works
+* The /etc/nginx/sites-available/ directory is used to store all your server block configurations.
+* The /etc/nginx/sites-enabled/ directory contains symbolic links to the active configurations.
+This makes it easy to enable or disable configurations without modifying the original files.
+
+*This setup is helpful for managing multiple websites on the same server. By splitting configurations into sites-available and sites-enabled* 
+
+* This is organized because because each server gets its own file
 
 ### What Does This All Do?
 This setup is designed to make your web server:
